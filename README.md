@@ -27,4 +27,11 @@ streamlit run app.py
 
 ## Not
 
-Bu uygulama yalnızca eğitim amaçlıdır. Tıbbi teşhis veya tedavi amacıyla kullanılmamalıdır.
+Bu uygulama yalnızca eğitim amaçlıdır. Tıbbi teşhis veya tedavi amacıyla kullanılmamalıdır. 
+
+
+## Canlı Uygulama Linki
+
+Streamlit ile geliştirilen canlı uygulamaya aşağıdaki bağlantıdan erişilebilir:
+
+https://heart-disease-ml-app-gjqj73gunsq2qxvhjz6fqp.streamlit.app/
