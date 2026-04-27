@@ -1,0 +1,21 @@
+{
+    "model_name": "Support Vector Machine",
+    "selected_features": [
+        "cp",
+        "thal",
+        "ca",
+        "sex",
+        "exang",
+        "slope",
+        "oldpeak",
+        "thalach",
+        "trestbps"
+    ],
+    "target_mapping": {
+        "0": "Kalp hastalığı yok",
+        "1": "Kalp hastalığı var"
+    },
+    "test_accuracy": 0.8913,
+    "test_precision": 0.8333,
+    "test_recall": 0.9524
+}
