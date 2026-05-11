@@ -354,6 +354,61 @@ header {visibility: hidden;}
     margin-top: -0.5rem;
     margin-bottom: 0.8rem;
 }
+
+/* ── Değişken Açıklama Expander ── */
+.glossary-container {
+    margin-top: 0.5rem;
+}
+.glossary-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.6rem;
+    transition: background 0.2s ease;
+}
+.glossary-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+.glossary-var {
+    font-weight: 700;
+    color: #60a5fa;
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+}
+.glossary-desc {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin: 0;
+}
+.glossary-desc code {
+    background: rgba(59, 130, 246, 0.12);
+    color: #93c5fd;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-family: 'Inter', monospace;
+}
+.glossary-note {
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.15);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    margin-top: 0.8rem;
+    color: #fcd34d;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Expander stil uyumu */
+.streamlit-expanderHeader {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    color: #cbd5e1 !important;
+    font-size: 0.9rem !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -491,6 +546,74 @@ with col_form:
 
     st.markdown("")  # küçük boşluk
     predict_clicked = st.button("🔬  Risk Analizi Yap", use_container_width=True)
+
+    # ─── DEĞİŞKEN AÇIKLAMA BÖLÜMÜ ──────────────────────────────────────────
+    with st.expander("ℹ️  Girilen Değerler Ne Anlama Geliyor?", expanded=False):
+        st.markdown("""
+        <div class="glossary-container">
+            <div class="glossary-item">
+                <div class="glossary-var">cp — Göğüs Ağrısı Tipi</div>
+                <div class="glossary-desc">
+                    Göğüs ağrısı tipini ifade eder. Kalp hastalığı riskini değerlendirmede önemli bir klinik belirtidir.<br>
+                    <code>1</code> Tipik anjina · <code>2</code> Atipik anjina · <code>3</code> Anjinal olmayan ağrı · <code>4</code> Asemptomatik
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">thal — Talasemi / Kan Akışı Testi</div>
+                <div class="glossary-desc">
+                    Kalp ile ilgili talasemi / kan akışı test sonucunu temsil eder.<br>
+                    <code>3</code> Normal · <code>6</code> Sabit defekt · <code>7</code> Geri dönüşümlü defekt
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">ca — Floroskopi Damar Sayısı</div>
+                <div class="glossary-desc">
+                    Floroskopi ile görüntülenen ana damar sayısını ifade eder. <code>0</code> ile <code>3</code> arasında değer alır.
+                    Damar sayısı arttıkça kalp hastalığı riskiyle ilişkili olabilir.
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">sex — Cinsiyet</div>
+                <div class="glossary-desc">
+                    Cinsiyet bilgisidir. <code>0</code> Kadın · <code>1</code> Erkek
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">exang — Egzersize Bağlı Anjina</div>
+                <div class="glossary-desc">
+                    Egzersize bağlı anjina olup olmadığını gösterir. <code>0</code> Hayır · <code>1</code> Evet
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">slope — ST Segment Eğimi</div>
+                <div class="glossary-desc">
+                    Egzersiz sırasında ST segmentinin eğimini ifade eder.<br>
+                    <code>1</code> Yukarı eğimli · <code>2</code> Düz · <code>3</code> Aşağı eğimli
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">oldpeak — ST Depresyon Değeri</div>
+                <div class="glossary-desc">
+                    Egzersize bağlı ST depresyon değeridir. Kalbin egzersiz sırasında verdiği elektriksel tepkiyle ilişkilidir.
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">thalach — Maksimum Kalp Atış Hızı</div>
+                <div class="glossary-desc">
+                    Kişinin ulaştığı maksimum kalp atış hızıdır (bpm).
+                </div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-var">trestbps — Dinlenme Kan Basıncı</div>
+                <div class="glossary-desc">
+                    Dinlenme halindeki kan basıncıdır (mm Hg).
+                </div>
+            </div>
+            <div class="glossary-note">
+                ⚕️ Bu değişken açıklamaları eğitim amaçlı sadeleştirilmiştir. Tıbbi yorum veya teşhis için doktor değerlendirmesi gerekir.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ─── TAHMİN MANTIĞI (orijinal mantık korunmuştur) ──────────────────────────────
 with col_result:
